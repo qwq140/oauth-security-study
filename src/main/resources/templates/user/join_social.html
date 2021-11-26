@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/v1/user/social">
+        <input type="text" name="id" id="id" placeholder="id"/>
+        <input type="text" name="username" id="username" placeholder="username" th:value="${socialDTO.name}"/>
+        <input type="email" name="email" id="email" placeholder="email" th:value="${socialDTO.email}"/>
+        <input type="text" name="hp" id="hp" placeholder="hp"/>
+        <input type="hidden" name="socialIdx" th:value="${socialDTO.socialIdx}"/>
+        <button type="submit">추가정보입력</button>
+    </form>
+</body>
+</html>

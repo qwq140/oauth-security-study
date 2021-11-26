@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  thymeleaf:
+    enabled: true
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:testdb
+      username: sa
+      password:
+
+  jpa:
+    open-in-view: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      use-new-id-generator-mappings: false
+      ddl-auto: update
+      show-sql: true # ??? jpa ????
+    generate-ddl: true
+    properties:
+      hibernate.format_sql: true
+    defer-datasource-initialization: true
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+sns:
+  google:
+    url: https://accounts.google.com/o/oauth2/v2/auth
+    client:
+      id: 908509068005-3lf8qi8r8bhfik0mmrf13k8lvnkpe7c2.apps.googleusercontent.com
+      secret: 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
+    callback:
+      url: http://localhost:8080/auth/google/callback
+    token:
+      url: https://www.googleapis.com/oauth2/v4/token
+    userinfo:
+      url: https://www.googleapis.com/userinfo/v2/me
